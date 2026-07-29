@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skyrocket Coach - What Makes Us Different</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <!-- Lucide Icons CDN -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        /* Smooth CSS Transitions for Dimming & Layout */
+        .feature-card {
+            transition: transform 0.18s ease-out, opacity 0.18s ease-out, border-color 0.3s;
+            transform-style: preserve-3d;
+            will-change: transform, opacity;
+        }
+
+        /* Global Container Setup matching React styles */
+        .dot-grid {
+            background-image: radial-gradient(circle, rgba(0, 0, 0, 0.055) 1px, transparent 1px);
+            background-size: 22px 22px;
+        }
+    </style>
+</head>
+
+<body class="bg-zinc-100 dark:bg-[#020205] min-h-screen flex items-center justify-center p-4 sm:p-8">
+
+    <!-- Main Container Component -->
+    <div id="spotlight-cards-root"
+        class="relative w-full max-w-5xl overflow-hidden rounded-2xl px-8 pt-9 pb-10 bg-white dark:bg-[#06060f] shadow-sm">
+
+        <!-- Dot grid — light mode only -->
+        <div aria-hidden="true" class="pointer-events-none absolute inset-0 dot-grid dark:hidden"></div>
+
+
+        <!-- Card Grid Container -->
+        <div id="card-grid" class="relative grid grid-cols-1 gap-3 sm:grid-cols-2 md:grid-cols-2 z-10">
+
+            <!-- Card 1: Instant -->
+            <div class="feature-card group relative flex flex-col gap-5 overflow-hidden rounded-2xl border p-6 border-zinc-200 bg-white shadow-[0_2px_8px_rgba(0,0,0,0.04)] dark:border-white/5 dark:bg-white/5 dark:shadow-none hover:border-zinc-300 dark:hover:border-white/15 cursor-pointer"
+                data-title="Instant" style="--accent-color: #f59e0b;">
+                <div aria-hidden="true" class="pointer-events-none absolute inset-0 rounded-2xl"
+                    style="background: radial-gradient(ellipse at 20% 20%, #f59e0b14, transparent 65%);"></div>
+                <div aria-hidden="true"
+                    class="glow-layer pointer-events-none absolute inset-0 rounded-2xl opacity-0 transition-opacity duration-300"
+                    style="background: radial-gradient(ellipse at 20% 20%, #f59e0b2e, transparent 65%);"></div>
+                <div aria-hidden="true"
+                    class="pointer-events-none absolute inset-y-0 left-0 w-[55%] -translate-x-full -skew-x-12 bg-gradient-to-r from-transparent via-white/10 to-transparent transition-transform duration-700 ease-out group-hover:translate-x-[280%]">
+                </div>
+                <div class="relative z-10 flex h-10 w-10 items-center justify-center rounded-xl"
+                    style="background: #f59e0b18; box-shadow: inset 0 0 0 1px #f59e0b30;">
+                    <i data-lucide="zap" class="w-[17px] h-[17px]" style="color: #f59e0b; stroke-width: 1.9;"></i>
+                </div>
+                <div class="relative z-10 flex flex-col gap-2">
+                    <h3 class="font-semibold text-[14px] text-zinc-900 tracking-tight dark:text-white">We work
+                        exclusively with coaches and consultants</h3>
+                    <p class="text-[12.5px] text-zinc-500 leading-relaxed dark:text-white/40">We don’t serve everyone.
+                        That focus means we understand your audience, your business model, and what actually moves the
+                        needle in your industry.</p>
+                </div>
+                <div aria-hidden="true"
+                    class="absolute bottom-0 left-0 h-[2px] w-0 rounded-full transition-all duration-500 group-hover:w-full"
+                    style="background: linear-gradient(to right, #f59e0b80, transparent);"></div>
+            </div>
+
+            <!-- Card 2: Secure -->
+            <div class="feature-card group relative flex flex-col gap-5 overflow-hidden rounded-2xl border p-6 border-zinc-200 bg-white shadow-[0_2px_8px_rgba(0,0,0,0.04)] dark:border-white/5 dark:bg-white/5 dark:shadow-none hover:border-zinc-300 dark:hover:border-white/15 cursor-pointer"
+                data-title="Secure" style="--accent-color: #60a5fa;">
+                <div aria-hidden="true" class="pointer-events-none absolute inset-0 rounded-2xl"
+                    style="background: radial-gradient(ellipse at 20% 20%, #60a5fa14, transparent 65%);"></div>
+                <div aria-hidden="true"
+                    class="glow-layer pointer-events-none absolute inset-0 rounded-2xl opacity-0 transition-opacity duration-300"
+                    style="background: radial-gradient(ellipse at 20% 20%, #60a5fa2e, transparent 65%);"></div>
+                <div aria-hidden="true"
+                    class="pointer-events-none absolute inset-y-0 left-0 w-[55%] -translate-x-full -skew-x-12 bg-gradient-to-r from-transparent via-white/10 to-transparent transition-transform duration-700 ease-out group-hover:translate-x-[280%]">
+                </div>
+                <div class="relative z-10 flex h-10 w-10 items-center justify-center rounded-xl"
+                    style="background: #60a5fa18; box-shadow: inset 0 0 0 1px #60a5fa30;">
+                    <i data-lucide="lock" class="w-[17px] h-[17px]" style="color: #60a5fa; stroke-width: 1.9;"></i>
+                </div>
+                <div class="relative z-10 flex flex-col gap-2">
+                    <h3 class="font-semibold text-[14px] text-zinc-900 tracking-tight dark:text-white">We communicate
+                        clearly and consistently</h3>
+                    <p class="text-[12.5px] text-zinc-500 leading-relaxed dark:text-white/40">One of the biggest
+                        frustrations coaches have with agencies and freelancers is poor communication. We keep you
+                        informed without overwhelming your inbox.</p>
+                </div>
+                <div aria-hidden="true"
+                    class="absolute bottom-0 left-0 h-[2px] w-0 rounded-full transition-all duration-500 group-hover:w-full"
+                    style="background: linear-gradient(to right, #60a5fa80, transparent);"></div>
+            </div>
+
+            <!-- Card 3: Global -->
+            <div class="feature-card group relative flex flex-col gap-5 overflow-hidden rounded-2xl border p-6 border-zinc-200 bg-white shadow-[0_2px_8px_rgba(0,0,0,0.04)] dark:border-white/5 dark:bg-white/5 dark:shadow-none hover:border-zinc-300 dark:hover:border-white/15 cursor-pointer"
+                data-title="Global" style="--accent-color: #34d399;">
+                <div aria-hidden="true" class="pointer-events-none absolute inset-0 rounded-2xl"
+                    style="background: radial-gradient(ellipse at 20% 20%, #34d39914, transparent 65%);"></div>
+                <div aria-hidden="true"
+                    class="glow-layer pointer-events-none absolute inset-0 rounded-2xl opacity-0 transition-opacity duration-300"
+                    style="background: radial-gradient(ellipse at 20% 20%, #34d3992e, transparent 65%);"></div>
+                <div aria-hidden="true"
+                    class="pointer-events-none absolute inset-y-0 left-0 w-[55%] -translate-x-full -skew-x-12 bg-gradient-to-r from-transparent via-white/10 to-transparent transition-transform duration-700 ease-out group-hover:translate-x-[280%]">
+                </div>
+                <div class="relative z-10 flex h-10 w-10 items-center justify-center rounded-xl"
+                    style="background: #34d39918; box-shadow: inset 0 0 0 1px #34d39930;">
+                    <i data-lucide="globe" class="w-[17px] h-[17px]" style="color: #34d399; stroke-width: 1.9;"></i>
+                </div>
+                <div class="relative z-10 flex flex-col gap-2">
+                    <h3 class="font-semibold text-[14px] text-zinc-900 tracking-tight dark:text-white">We understand the
+                        U.S. and European coaching market</h3>
+                    <p class="text-[12.5px] text-zinc-500 leading-relaxed dark:text-white/40">We understand the U.S. and
+                        European coaching market</p>
+                </div>
+                <div aria-hidden="true"
+                    class="absolute bottom-0 left-0 h-[2px] w-0 rounded-full transition-all duration-500 group-hover:w-full"
+                    style="background: linear-gradient(to right, #34d39980, transparent);"></div>
+            </div>
+
+            <!-- Card 4: Developer first -->
+            <div class="feature-card group relative flex flex-col gap-5 overflow-hidden rounded-2xl border p-6 border-zinc-200 bg-white shadow-[0_2px_8px_rgba(0,0,0,0.04)] dark:border-white/5 dark:bg-white/5 dark:shadow-none hover:border-zinc-300 dark:hover:border-white/15 cursor-pointer"
+                data-title="Developer first" style="--accent-color: #a78bfa;">
+                <div aria-hidden="true" class="pointer-events-none absolute inset-0 rounded-2xl"
+                    style="background: radial-gradient(ellipse at 20% 20%, #a78bfa14, transparent 65%);"></div>
+                <div aria-hidden="true"
+                    class="glow-layer pointer-events-none absolute inset-0 rounded-2xl opacity-0 transition-opacity duration-300"
+                    style="background: radial-gradient(ellipse at 20% 20%, #a78bfa2e, transparent 65%);"></div>
+                <div aria-hidden="true"
+                    class="pointer-events-none absolute inset-y-0 left-0 w-[55%] -translate-x-full -skew-x-12 bg-gradient-to-r from-transparent via-white/10 to-transparent transition-transform duration-700 ease-out group-hover:translate-x-[280%]">
+                </div>
+                <div class="relative z-10 flex h-10 w-10 items-center justify-center rounded-xl"
+                    style="background: #a78bfa18; box-shadow: inset 0 0 0 1px #a78bfa30;">
+                    <i data-lucide="code" class="w-[17px] h-[17px]" style="color: #a78bfa; stroke-width: 1.9;"></i>
+                </div>
+                <div class="relative z-10 flex flex-col gap-2">
+                    <h3 class="font-semibold text-[14px] text-zinc-900 tracking-tight dark:text-white">We take full
+                        ownership​
+                    </h3>
+                    <p class="text-[12.5px] text-zinc-500 leading-relaxed dark:text-white/40">You shouldn't have to
+                        manage your marketing team like a second job. When you work with us, we take responsibility for
+                        the work start to finish.</p>
+                </div>
+                <div aria-hidden="true"
+                    class="absolute bottom-0 left-0 h-[2px] w-0 rounded-full transition-all duration-500 group-hover:w-full"
+                    style="background: linear-gradient(to right, #a78bfa80, transparent);"></div>
+            </div>
+
+
+        </div>
+    </div>
+
+    <!-- JavaScript Behavior Code -->
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        const TILT_MAX = 9;
+        const cards = document.querySelectorAll('.feature-card');
+
+        cards.forEach(card => {
+            const glowLayer = card.querySelector('.glow-layer');
+
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+
+                // Normalize mouse tracking position relative to card boundaries [0 to 1]
+                const normX = (e.clientX - rect.left) / rect.width;
+                const normY = (e.clientY - rect.top) / rect.height;
+
+                // Map normalization vectors directly to the 3D rotation angles
+                const rotateX = ((normY - 0.5) * -(TILT_MAX * 2)).toFixed(2);
+                const rotateY = ((normX - 0.5) * (TILT_MAX * 2)).toFixed(2);
+
+                // Apply magnetic perspective transforms inline
+                card.style.transform = `perspective(900px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+            });
+
+            card.addEventListener('mouseenter', () => {
+                // Activate radial hover glow layer
+                if (glowLayer) glowLayer.style.opacity = '1';
+
+                // Dim focus-dim siblings across the layout grid
+                const absoluteTitle = card.getAttribute('data-title');
+                cards.forEach(sibling => {
+                    if (sibling.getAttribute('data-title') !== absoluteTitle) {
+                        sibling.style.opacity = '0.5';
+                        sibling.style.transform = 'scale(0.96)';
+                    }
+                });
+            });
+
+            card.addEventListener('mouseleave', () => {
+                // Clear variables back to center baseline structures
+                if (glowLayer) glowLayer.style.opacity = '0';
+                card.style.transform = `perspective(900px) rotateX(0deg) rotateY(0deg)`;
+
+                // Reset all grid elements state parameters
+                cards.forEach(sibling => {
+                    sibling.style.opacity = '1';
+                    sibling.style.transform = 'scale(1)';
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>

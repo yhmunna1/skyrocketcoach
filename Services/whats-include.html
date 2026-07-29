@@ -1,0 +1,349 @@
+<style>
+    /* Container Grid */
+    .sk-card-grid-wrapper {
+        width: 100%;
+        max-width: 1450px;
+        margin: 0 auto;
+        box-sizing: border-box;
+    }
+
+    .sk-card-grid {
+        display: grid;
+        grid-template-columns: repeat(1, minmax(0, 1fr));
+        gap: 1rem;
+        position: relative;
+        z-index: 10;
+    }
+
+    @media (min-width: 640px) {
+        .sk-card-grid {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+    }
+
+    /* Base Feature Card */
+    .sk-feature-card {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        gap: 1.25rem;
+        overflow: hidden;
+        border-radius: 1rem;
+        border: 1px solid #e4e4e7;
+        padding: 1.5rem;
+        background-color: #ffffff;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+        cursor: pointer;
+        transition: transform 0.18s ease-out, opacity 0.18s ease-out, border-color 0.3s ease;
+        transform-style: preserve-3d;
+        will-change: transform, opacity;
+        box-sizing: border-box;
+    }
+
+    .sk-feature-card:hover {
+        border-color: #d4d4d8;
+    }
+
+    /* Radial & Glow Layers */
+    .sk-bg-radial {
+        pointer-events: none;
+        position: absolute;
+        inset: 0;
+        border-radius: 1rem;
+    }
+
+    .sk-glow-layer {
+        pointer-events: none;
+        position: absolute;
+        inset: 0;
+        border-radius: 1rem;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+
+    /* Shimmer / Flare Effect */
+    .sk-shimmer-effect {
+        pointer-events: none;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        width: 55%;
+        transform: translateX(-100%) skewX(-12deg);
+        background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.15), transparent);
+        transition: transform 0.7s ease-out;
+    }
+
+    .sk-feature-card:hover .sk-shimmer-effect {
+        transform: translateX(280%) skewX(-12deg);
+    }
+
+    /* Icon Box Setup */
+    .sk-icon-box {
+        position: relative;
+        z-index: 10;
+        display: flex;
+        height: 2.5rem;
+        width: 2.5rem;
+        align-items: center;
+        justify-content: center;
+        border-radius: 0.75rem;
+    }
+
+    /* Content Styling */
+    .sk-card-content {
+        position: relative;
+        z-index: 10;
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .sk-card-title {
+        font-size: 22px;
+        font-weight: 600;
+        color: #18181b;
+        letter-spacing: -0.015em;
+        margin: 0;
+        line-height: 1.3;
+        font-family: inherit;
+    }
+
+    .sk-card-desc {
+        font-size: 14px;
+        color: #71717a;
+        line-height: 1.6;
+        margin: 0;
+        font-family: inherit;
+    }
+
+    /* Bottom Hover Line */
+    .sk-bottom-line {
+        pointer-events: none;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        height: 2px;
+        width: 0;
+        border-radius: 9999px;
+        transition: width 0.5s ease;
+    }
+
+    .sk-feature-card:hover .sk-bottom-line {
+        width: 100%;
+    }
+</style>
+
+<div class="sk-card-grid-wrapper">
+    <div class="sk-card-grid" id="sk-card-grid">
+
+        <!-- Card 1: Professional cuts and pacing -->
+        <div class="sk-feature-card" data-title="Professional cuts">
+            <div class="sk-bg-radial"
+                style="background: radial-gradient(ellipse at 20% 20%, rgba(245, 158, 11, 0.08), transparent 65%);">
+            </div>
+            <div class="sk-glow-layer"
+                style="background: radial-gradient(ellipse at 20% 20%, rgba(245, 158, 11, 0.18), transparent 65%);">
+            </div>
+            <div class="sk-shimmer-effect"></div>
+            <div class="sk-icon-box"
+                style="background: rgba(245, 158, 11, 0.09); box-shadow: inset 0 0 0 1px rgba(245, 158, 11, 0.19);">
+                <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none"
+                    stroke="#f59e0b" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="6" cy="6" r="3" />
+                    <circle cx="6" cy="18" r="3" />
+                    <line x1="20" x2="8.12" y1="4" y2="15.88" />
+                    <line x1="14.47" x2="20" y1="14.48" y2="20" />
+                    <line x1="8.12" x2="12" y1="8.12" y2="12" />
+                </svg>
+            </div>
+            <div class="sk-card-content">
+                <h3 class="sk-card-title">Professional cuts and pacing</h3>
+                <p class="sk-card-desc">Tight, engaging edits that keep viewers watching.</p>
+            </div>
+            <div class="sk-bottom-line"
+                style="background: linear-gradient(to right, rgba(245, 158, 11, 0.5), transparent);"></div>
+        </div>
+
+        <!-- Card 2: Captions and subtitles -->
+        <div class="sk-feature-card" data-title="Captions">
+            <div class="sk-bg-radial"
+                style="background: radial-gradient(ellipse at 20% 20%, rgba(96, 165, 250, 0.08), transparent 65%);">
+            </div>
+            <div class="sk-glow-layer"
+                style="background: radial-gradient(ellipse at 20% 20%, rgba(96, 165, 250, 0.18), transparent 65%);">
+            </div>
+            <div class="sk-shimmer-effect"></div>
+            <div class="sk-icon-box"
+                style="background: rgba(96, 165, 250, 0.09); box-shadow: inset 0 0 0 1px rgba(96, 165, 250, 0.19);">
+                <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none"
+                    stroke="#60a5fa" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+                    <path d="M7 8h10" />
+                    <path d="M7 12h7" />
+                </svg>
+            </div>
+            <div class="sk-card-content">
+                <h3 class="sk-card-title">Captions and subtitles</h3>
+                <p class="sk-card-desc">Accurate, on-brand captions for every video.</p>
+            </div>
+            <div class="sk-bottom-line"
+                style="background: linear-gradient(to right, rgba(96, 165, 250, 0.5), transparent);"></div>
+        </div>
+
+        <!-- Card 3: Custom thumbnails -->
+        <div class="sk-feature-card" data-title="Thumbnails">
+            <div class="sk-bg-radial"
+                style="background: radial-gradient(ellipse at 20% 20%, rgba(52, 211, 153, 0.08), transparent 65%);">
+            </div>
+            <div class="sk-glow-layer"
+                style="background: radial-gradient(ellipse at 20% 20%, rgba(52, 211, 153, 0.18), transparent 65%);">
+            </div>
+            <div class="sk-shimmer-effect"></div>
+            <div class="sk-icon-box"
+                style="background: rgba(52, 211, 153, 0.09); box-shadow: inset 0 0 0 1px rgba(52, 211, 153, 0.19);">
+                <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none"
+                    stroke="#34d399" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+                    <rect width="18" height="18" x="3" y="3" rx="2" ry="2" />
+                    <circle cx="9" cy="9" r="2" />
+                    <path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21" />
+                </svg>
+            </div>
+            <div class="sk-card-content">
+                <h3 class="sk-card-title">Custom thumbnails</h3>
+                <p class="sk-card-desc">Click-worthy thumbnails that match your brand.</p>
+            </div>
+            <div class="sk-bottom-line"
+                style="background: linear-gradient(to right, rgba(52, 211, 153, 0.5), transparent);"></div>
+        </div>
+
+        <!-- Card 4: Music and sound design -->
+        <div class="sk-feature-card" data-title="Music & Sound">
+            <div class="sk-bg-radial"
+                style="background: radial-gradient(ellipse at 20% 20%, rgba(167, 139, 250, 0.08), transparent 65%);">
+            </div>
+            <div class="sk-glow-layer"
+                style="background: radial-gradient(ellipse at 20% 20%, rgba(167, 139, 250, 0.18), transparent 65%);">
+            </div>
+            <div class="sk-shimmer-effect"></div>
+            <div class="sk-icon-box"
+                style="background: rgba(167, 139, 250, 0.09); box-shadow: inset 0 0 0 1px rgba(167, 139, 250, 0.19);">
+                <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none"
+                    stroke="#a78bfa" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M9 18V5l12-2v13" />
+                    <circle cx="6" cy="18" r="3" />
+                    <circle cx="18" cy="16" r="3" />
+                </svg>
+            </div>
+            <div class="sk-card-content">
+                <h3 class="sk-card-title">Music and sound design</h3>
+                <p class="sk-card-desc">Licensed background music, audio cleanup, and levelling.</p>
+            </div>
+            <div class="sk-bottom-line"
+                style="background: linear-gradient(to right, rgba(167, 139, 250, 0.5), transparent);"></div>
+        </div>
+
+        <!-- Card 5: Short-form clips -->
+        <div class="sk-feature-card" data-title="Short-form clips">
+            <div class="sk-bg-radial"
+                style="background: radial-gradient(ellipse at 20% 20%, rgba(244, 63, 94, 0.08), transparent 65%);">
+            </div>
+            <div class="sk-glow-layer"
+                style="background: radial-gradient(ellipse at 20% 20%, rgba(244, 63, 94, 0.18), transparent 65%);">
+            </div>
+            <div class="sk-shimmer-effect"></div>
+            <div class="sk-icon-box"
+                style="background: rgba(244, 63, 94, 0.09); box-shadow: inset 0 0 0 1px rgba(244, 63, 94, 0.19);">
+                <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none"
+                    stroke="#f43f5e" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+                    <rect width="18" height="18" x="3" y="3" rx="2" />
+                    <path d="M7 3v18" />
+                    <path d="M3 7.5h4" />
+                    <path d="M3 12h18" />
+                    <path d="M3 16.5h4" />
+                    <path d="M17 3v18" />
+                    <path d="M17 7.5h4" />
+                    <path d="M17 16.5h4" />
+                </svg>
+            </div>
+            <div class="sk-card-content">
+                <h3 class="sk-card-title">Short-form clips</h3>
+                <p class="sk-card-desc">Reels and Shorts cut from your long-form content.</p>
+            </div>
+            <div class="sk-bottom-line"
+                style="background: linear-gradient(to right, rgba(244, 63, 94, 0.5), transparent);"></div>
+        </div>
+
+        <!-- Card 6: Revisions included -->
+        <div class="sk-feature-card" data-title="Revisions">
+            <div class="sk-bg-radial"
+                style="background: radial-gradient(ellipse at 20% 20%, rgba(6, 182, 212, 0.08), transparent 65%);">
+            </div>
+            <div class="sk-glow-layer"
+                style="background: radial-gradient(ellipse at 20% 20%, rgba(6, 182, 212, 0.18), transparent 65%);">
+            </div>
+            <div class="sk-shimmer-effect"></div>
+            <div class="sk-icon-box"
+                style="background: rgba(6, 182, 212, 0.09); box-shadow: inset 0 0 0 1px rgba(6, 182, 212, 0.19);">
+                <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none"
+                    stroke="#06b6d4" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M3 12a9 9 0 0 1 15-6.7L21 8" />
+                    <path d="M21 3v5h-5" />
+                    <path d="M21 12a9 9 0 0 1-15 6.7L3 16" />
+                    <path d="M3 21v-5h5" />
+                </svg>
+            </div>
+            <div class="sk-card-content">
+                <h3 class="sk-card-title">Revisions included</h3>
+                <p class="sk-card-desc">We refine until the edit feels right.</p>
+            </div>
+            <div class="sk-bottom-line"
+                style="background: linear-gradient(to right, rgba(6, 182, 212, 0.5), transparent);"></div>
+        </div>
+
+    </div>
+</div>
+
+<script>
+    (function () {
+        const TILT_MAX = 8;
+        const cards = document.querySelectorAll('.sk-feature-card');
+
+        cards.forEach(card => {
+            const glowLayer = card.querySelector('.sk-glow-layer');
+
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const normX = (e.clientX - rect.left) / rect.width;
+                const normY = (e.clientY - rect.top) / rect.height;
+
+                const rotateX = ((normY - 0.5) * -(TILT_MAX * 2)).toFixed(2);
+                const rotateY = ((normX - 0.5) * (TILT_MAX * 2)).toFixed(2);
+
+                card.style.transform = `perspective(900px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+            });
+
+            card.addEventListener('mouseenter', () => {
+                if (glowLayer) glowLayer.style.opacity = '1';
+
+                const absoluteTitle = card.getAttribute('data-title');
+                cards.forEach(sibling => {
+                    if (sibling.getAttribute('data-title') !== absoluteTitle) {
+                        sibling.style.opacity = '0.5';
+                        sibling.style.transform = 'scale(0.97)';
+                    }
+                });
+            });
+
+            card.addEventListener('mouseleave', () => {
+                if (glowLayer) glowLayer.style.opacity = '0';
+                card.style.transform = `perspective(900px) rotateX(0deg) rotateY(0deg)`;
+
+                cards.forEach(sibling => {
+                    sibling.style.opacity = '1';
+                    sibling.style.transform = 'scale(1)';
+                });
+            });
+        });
+    })();
+</script>

@@ -1,0 +1,41 @@
+/* Glassmorphism Hero Container */
+selector {
+    position: relative;
+    background: #FAFAFA;
+    border-radius: 10px;
+    overflow: hidden;
+    z-index: 1;
+    border: 1px solid #e4e4e7;
+    /* border: 1px solid rgba(255, 255, 255, 0.8); */
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+}
+
+/* Background Soft Glows (Using #C1892C) */
+selector::before,
+selector::after {
+    content: '';
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(90px);
+    z-index: -1;
+    pointer-events: none;
+}
+
+/* Top Right Soft Golden Glow */
+selector::before {
+    width: 350px;
+    height: 350px;
+    top: -100px;
+    right: -50px;
+    background: rgba(204, 142, 42, 0.15); /* Brand color opacity reduced */
+}
+
+/* Bottom Left Subtle Dark/Gray Accent Glow */
+selector::after {
+    width: 400px;
+    height: 400px;
+    bottom: -150px;
+    left: -100px;
+    background: rgba(0, 0, 0, 0.04); /* Subtle black tint */
+}
