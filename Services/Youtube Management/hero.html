@@ -1,0 +1,363 @@
+<style>
+    /* Full Width Card Wrapper */
+    .mec-card-wrapper {
+        width: 100%;
+        position: relative;
+        box-sizing: border-box;
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    }
+
+    .mec-card-container {
+        position: relative;
+        width: 100%;
+        height: 420px;
+        overflow: hidden;
+        border-radius: 1rem;
+        border: 1px solid rgba(228, 228, 231, 0.8);
+        background-color: #ffffff;
+        box-sizing: border-box;
+        outline: none;
+    }
+
+    /* Canvas Layer for Animated Dots */
+    .mec-canvas {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: 1;
+    }
+
+    /* Top Left Text Badge */
+    .mec-top-text {
+        position: absolute;
+        top: 1.5rem;
+        left: 1.5rem;
+        z-index: 10;
+    }
+
+    .mec-badge-bg {
+        position: absolute;
+        inset: 0;
+        border-radius: 0.5rem;
+        background: rgba(255, 255, 255, 0.7);
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+    }
+
+    .mec-top-text-content {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        gap: 0.25rem;
+        padding: 0.25rem 0.5rem;
+    }
+
+    .mec-top-title {
+        font-size: 0.875rem;
+        font-weight: 700;
+        color: #18181b;
+        margin: 0;
+        line-height: 1.2;
+    }
+
+    .mec-top-subtitle {
+        font-size: 0.75rem;
+        font-weight: 500;
+        color: #71717a;
+        margin: 0;
+        line-height: 1.2;
+    }
+
+    /* Center Content Area */
+    .mec-center-content {
+        position: relative;
+        z-index: 10;
+        display: flex;
+        height: 100%;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 0 1rem;
+        box-sizing: border-box;
+    }
+
+    .mec-inner-flex {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1.25rem;
+        text-align: center;
+    }
+
+    .mec-blur-bg-hero {
+        position: absolute;
+        width: 55%;
+        inset: -0.5rem -1.5rem;
+        border-radius: 9999px;
+        background: rgba(255, 255, 255, 0.85);
+        filter: blur(16px);
+        -webkit-filter: blur(16px);
+    }
+
+    .mec-main-title {
+        position: relative;
+        font-size: 2.25rem;
+        font-weight: 700;
+        color: #18181b;
+        letter-spacing: -0.025em;
+        margin: 0;
+        line-height: 1.2;
+        width: 65%;
+        text-align: center;
+    }
+
+    .mec-highlight {
+        color: #C0882C;
+    }
+
+
+    .mec-main-subtitle {
+        position: relative;
+        max-width: 154rem;
+        font-size: 1rem;
+        font-weight: 500;
+        color: #3f3f46;
+        line-height: 1.6;
+        margin: 0;
+        width: 55%;
+        text-align: center;
+    }
+
+    /* Action Buttons */
+    .mec-button-group {
+        margin-top: 0.5rem;
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+    }
+
+    .mec-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 5px;
+        padding: 0.625rem 1.25rem;
+        font-size: 0.875rem;
+        font-weight: 600;
+        text-decoration: none !important;
+        transition: all 0.2s ease;
+        cursor: pointer;
+        box-sizing: border-box;
+    }
+
+    .mec-btn-primary {
+        background-color: #C1892C;
+        color: #ffffff !important;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        border: 1px solid transparent;
+    }
+
+    .mec-btn-primary:hover {
+        background-color: #AA7011;
+        transform: translateY(-1px);
+    }
+
+    /* Footer Text */
+    .mec-footer-text {
+        position: absolute;
+        bottom: 1.25rem;
+        left: 0;
+        right: 0;
+        z-index: 10;
+        display: flex;
+        justify-content: center;
+    }
+
+    .mec-footer-content {
+        position: relative;
+        padding: 0.25rem 1rem;
+        font-size: 0.75rem;
+        font-weight: 500;
+        color: #71717a;
+        margin: 0;
+    }
+</style>
+
+<div class="mec-card-wrapper">
+    <div class="mec-card-container" id="mecCardContainer" tabindex="0">
+        <!-- Interactive Canvas Layer -->
+        <canvas class="mec-canvas" id="mecCanvas"></canvas>
+
+
+        <!-- Center Content Area -->
+        <div class="mec-center-content">
+            <div class="mec-inner-flex">
+                <div style="position: relative; display: flex; justify-content: center;">
+                    <div class="mec-blur-bg-hero"></div>
+                    <h2 class="mec-main-title">Your raw footage, turned into polished content <span
+                            class="mec-highlight">without the back-and-forth</span>
+                    </h2>
+                </div>
+                <div style="position: relative; display: flex; justify-content: center;">
+                    <div class="mec-blur-bg-hero"></div>
+                    <p class="mec-main-subtitle">You show up, record, and hand it over. We take care of everything else
+                        cuts, captions, music, thumbnails, and a final video 
+                        that looks and sounds exactly how your brand should.</p>
+                </div>
+                <div class="mec-button-group">
+                    <a href="https://calendly.com/rhriyad/skyrocketcoach" class="mec-btn mec-btn-primary">Book a free
+                        discovery call</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    (function () {
+        const container = document.getElementById('mecCardContainer');
+        const canvas = document.getElementById('mecCanvas');
+        if (!container || !canvas) return;
+
+        const ctx = canvas.getContext('2d');
+        const dotSpacing = 16;
+        const dotSize = 2;
+        const repulsionRadius = 80;
+        const repulsionStrength = 20;
+
+        let width = 0;
+        let height = 0;
+        let dots = [];
+        let mouse = { x: -9999, y: -9999, targetX: -9999, targetY: -9999 };
+        let animationFrameId;
+
+        class Dot {
+            constructor(x, y, opacity) {
+                this.baseX = x;
+                this.baseY = y;
+                this.x = x;
+                this.y = y;
+                this.baseOpacity = opacity;
+                this.currentOpacity = opacity;
+                this.phase = Math.random() * Math.PI * 2;
+                this.speed = 0.02 + Math.random() * 0.02;
+            }
+
+            update(mx, my) {
+                // Opacity pulsing animation
+                this.phase += this.speed;
+                const pulse = (Math.sin(this.phase) + 1) / 2;
+                let targetOpacity = this.baseOpacity * (0.5 + pulse * 0.8);
+
+                // Repulsion physics calculation
+                let targetX = this.baseX;
+                let targetY = this.baseY;
+
+                const dx = this.baseX - mx;
+                const dy = this.baseY - my;
+                const dist = Math.sqrt(dx * dx + dy * dy);
+
+                if (dist < repulsionRadius) {
+                    const force = (1 - dist / repulsionRadius) * repulsionStrength;
+                    const angle = Math.atan2(dy, dx);
+                    targetX = this.baseX + Math.cos(angle) * force;
+                    targetY = this.baseY + Math.sin(angle) * force;
+
+                    // Proximity opacity boost
+                    const boost = (1 - dist / (repulsionRadius * 1.2)) * 0.8;
+                    targetOpacity = Math.min(1, targetOpacity + boost);
+                }
+
+                // Smooth movement easing
+                this.x += (targetX - this.x) * 0.15;
+                this.y += (targetY - this.y) * 0.15;
+                this.currentOpacity += (targetOpacity - this.currentOpacity) * 0.15;
+            }
+
+            draw(context) {
+                context.beginPath();
+                context.arc(this.x, this.y, dotSize / 2, 0, Math.PI * 2);
+                context.fillStyle = `rgba(161, 161, 170, ${this.currentOpacity})`;
+                context.fill();
+            }
+        }
+
+        function initDots() {
+            const rect = container.getBoundingClientRect();
+            width = rect.width;
+            height = rect.height;
+
+            // Match canvas size to display
+            canvas.width = width * window.devicePixelRatio;
+            canvas.height = height * window.devicePixelRatio;
+            ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
+
+            dots = [];
+            const cols = Math.ceil(width / dotSpacing);
+            const rows = Math.ceil(height / dotSpacing);
+            const centerX = width / 2;
+            const centerY = height / 2;
+            const maxDistance = Math.sqrt(centerX * centerX + centerY * centerY);
+
+            for (let r = 0; r <= rows; r++) {
+                for (let c = 0; c <= cols; c++) {
+                    const x = c * dotSpacing;
+                    const y = r * dotSpacing;
+
+                    const dx = x - centerX;
+                    const dy = y - centerY;
+                    const distFromCenter = Math.sqrt(dx * dx + dy * dy);
+                    const edgeFactor = Math.min(distFromCenter / (maxDistance * 0.7), 1);
+
+                    if (Math.random() > edgeFactor) continue;
+
+                    const pattern = (r + c) % 3;
+                    const baseOpacities = [0.3, 0.5, 0.7];
+                    const opacity = baseOpacities[pattern] * edgeFactor;
+
+                    dots.push(new Dot(x, y, opacity));
+                }
+            }
+        }
+
+        function animate() {
+            // Smooth lerp mouse coordinates
+            mouse.x += (mouse.targetX - mouse.x) * 0.2;
+            mouse.y += (mouse.targetY - mouse.y) * 0.2;
+
+            ctx.clearRect(0, 0, width, height);
+
+            dots.forEach(dot => {
+                dot.update(mouse.x, mouse.y);
+                dot.draw(ctx);
+            });
+
+            animationFrameId = requestAnimationFrame(animate);
+        }
+
+        // Event Listeners
+        container.addEventListener('mousemove', (e) => {
+            const rect = container.getBoundingClientRect();
+            mouse.targetX = e.clientX - rect.left;
+            mouse.targetY = e.clientY - rect.top;
+        });
+
+        container.addEventListener('mouseleave', () => {
+            mouse.targetX = -9999;
+            mouse.targetY = -9999;
+        });
+
+        // Resize Observer for Dynamic Responsiveness
+        const resizeObserver = new ResizeObserver(() => {
+            initDots();
+        });
+        resizeObserver.observe(container);
+
+        // Initial Trigger
+        initDots();
+        animate();
+    })();
+</script>
