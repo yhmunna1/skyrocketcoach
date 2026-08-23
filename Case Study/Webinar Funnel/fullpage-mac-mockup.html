@@ -1,0 +1,234 @@
+<style>
+    /* Main Section Container - Removed Top Padding */
+    .sk-macbook-section {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 0 1rem 3rem 1rem;
+        box-sizing: border-box;
+    }
+
+    /* MacBook Structure */
+    .sk-macbook-wrapper {
+        position: relative;
+        width: 100%;
+        max-width: 850px;
+        margin: 0 auto;
+    }
+
+    /* MacBook Screen Display Area */
+    .sk-macbook-screen {
+        position: relative;
+        width: 100%;
+        padding-top: 62.5%;
+        background: #0d0d0d;
+        border-radius: 20px 20px 0 0;
+        border: 12px solid #1e1e1e;
+        border-bottom: none;
+        box-shadow: inset 0 0 0 2px #333;
+        overflow: hidden;
+        box-sizing: border-box;
+    }
+
+    /* Camera Dot */
+    .sk-macbook-screen::before {
+        content: '';
+        position: absolute;
+        top: -8px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 6px;
+        height: 6px;
+        background: #000;
+        border: 1px solid #333;
+        border-radius: 50%;
+        z-index: 10;
+    }
+
+    /* Scrollable Image Area */
+    .sk-macbook-viewport {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        cursor: pointer;
+    }
+
+    /* Hardware Accelerated Image Animation */
+    .sk-macbook-img {
+        width: 100%;
+        height: auto;
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        transform: translate3d(0, 0, 0);
+        transition: transform 6s cubic-bezier(0.25, 1, 0.5, 1);
+        will-change: transform;
+        loading: lazy;
+        /* Lazy load for speed */
+    }
+
+    /* GPU Powered Smooth Scroll Effect */
+    .sk-macbook-viewport:hover .sk-macbook-img {
+        transform: translate3d(0, calc(-100% + 500px), 0);
+    }
+
+    /* MacBook Bottom Base */
+    .sk-macbook-base {
+        position: relative;
+        width: 114%;
+        height: 16px;
+        left: -7%;
+        background: linear-gradient(180deg, #e2e8f0 0%, #cbd5e1 50%, #94a3b8 100%);
+        border-radius: 2px 2px 12px 12px;
+        box-shadow: 0 20px 30px rgba(0, 0, 0, 0.15);
+    }
+
+    .sk-macbook-base::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 15%;
+        height: 5px;
+        background: #64748b;
+        border-radius: 0 0 6px 6px;
+    }
+
+    .sk-macbook-base::after {
+        content: 'Click the laptop screen to see the full preview';
+        position: absolute;
+        bottom: -22px;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 10px;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        color: #94a3b8;
+        letter-spacing: 1px;
+        font-weight: 500;
+    }
+
+    /* Lightbox Modal CSS */
+    .sk-lightbox-overlay {
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.85);
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+        z-index: 999999;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.25s ease;
+        padding: 2rem;
+        box-sizing: border-box;
+    }
+
+    .sk-lightbox-overlay.active {
+        opacity: 1;
+        pointer-events: auto;
+    }
+
+    .sk-lightbox-content {
+        position: relative;
+        max-width: 90%;
+        max-height: 90vh;
+        overflow-y: auto;
+        border-radius: 12px;
+        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+        background: #fff;
+    }
+
+    .sk-lightbox-content img {
+        width: 100%;
+        height: auto;
+        display: block;
+    }
+
+    /* Close Button */
+    .sk-lightbox-close {
+        position: fixed;
+        top: 25px;
+        right: 25px;
+        width: 44px;
+        height: 44px;
+        background: rgba(255, 255, 255, 0.2);
+        border: 1px solid rgba(255, 255, 255, 0.4);
+        color: #fff;
+        border-radius: 50%;
+        font-size: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: transform 0.2s ease, background 0.2s ease;
+        z-index: 1000000;
+    }
+
+    .sk-lightbox-close:hover {
+        background: rgba(255, 255, 255, 0.4);
+        transform: scale(1.1);
+    }
+</style>
+
+<div class="sk-macbook-section">
+    <div class="sk-macbook-wrapper">
+        <div class="sk-macbook-screen">
+            <div class="sk-macbook-viewport" id="skMacbookViewport">
+                <!-- 🔴 Replace with your Image URL -->
+                <img src="https://skyrocketcoach.com/wp-content/uploads/2026/08/fullpage-ss-1-768x5297.png"
+                    alt="Page Screenshot" class="sk-macbook-img" id="skPageScreenshot" loading="lazy">
+            </div>
+        </div>
+        <div class="sk-macbook-base"></div>
+    </div>
+</div>
+
+<div class="sk-lightbox-overlay" id="skLightbox">
+    <button class="sk-lightbox-close" id="skLightboxClose" aria-label="Close">&times;</button>
+    <div class="sk-lightbox-content">
+        <img src="" id="skLightboxImg" alt="Full Preview">
+    </div>
+</div>
+
+<script>
+    (function () {
+        const viewport = document.getElementById('skMacbookViewport');
+        const screenshotImg = document.getElementById('skPageScreenshot');
+        const lightbox = document.getElementById('skLightbox');
+        const lightboxImg = document.getElementById('skLightboxImg');
+        const closeBtn = document.getElementById('skLightboxClose');
+
+        viewport.addEventListener('click', function () {
+            lightboxImg.src = screenshotImg.src;
+            lightbox.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
+
+        function closePopup() {
+            lightbox.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        closeBtn.addEventListener('click', closePopup);
+
+        lightbox.addEventListener('click', function (e) {
+            if (e.target === lightbox) {
+                closePopup();
+            }
+        });
+
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape' && lightbox.classList.contains('active')) {
+                closePopup();
+            }
+        });
+    })();
+</script>
