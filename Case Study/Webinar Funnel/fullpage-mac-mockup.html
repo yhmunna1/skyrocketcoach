@@ -1,5 +1,4 @@
 <style>
-    /* Main Section Container - Removed Top Padding */
     .sk-macbook-section {
         width: 100%;
         display: flex;
@@ -66,10 +65,9 @@
         top: 0;
         left: 0;
         transform: translate3d(0, 0, 0);
-        transition: transform 6s cubic-bezier(0.25, 1, 0.5, 1);
+        /* Scroll speed control */
+        transition: transform 40s cubic-bezier(0.25, 1, 0.5, 1);
         will-change: transform;
-        loading: lazy;
-        /* Lazy load for speed */
     }
 
     /* GPU Powered Smooth Scroll Effect */
@@ -101,7 +99,6 @@
     }
 
     .sk-macbook-base::after {
-        content: 'Click the laptop screen to see the full preview';
         position: absolute;
         bottom: -22px;
         left: 50%;
@@ -182,7 +179,6 @@
     <div class="sk-macbook-wrapper">
         <div class="sk-macbook-screen">
             <div class="sk-macbook-viewport" id="skMacbookViewport">
-                <!-- 🔴 Replace with your Image URL -->
                 <img src="https://skyrocketcoach.com/wp-content/uploads/2026/08/fullpage-ss-1-768x5297.png"
                     alt="Page Screenshot" class="sk-macbook-img" id="skPageScreenshot" loading="lazy">
             </div>
