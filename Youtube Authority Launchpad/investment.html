@@ -1,0 +1,345 @@
+<style>
+    /* Pricing Container Grid */
+    .sk-pricing-grid-wrapper {
+        width: 100%;
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 20px 10px;
+        box-sizing: border-box;
+    }
+
+    .sk-pricing-grid {
+        display: grid;
+        grid-template-columns: repeat(1, minmax(0, 1fr));
+        gap: 1.5rem;
+        position: relative;
+        z-index: 10;
+    }
+
+    @media (min-width: 768px) {
+        .sk-pricing-grid {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+    }
+
+    /* Base Pricing Card */
+    .sk-price-card {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        gap: 1.5rem;
+        overflow: hidden;
+        border-radius: 1.25rem;
+        border: 1px solid #e4e4e7;
+        padding: 2.25rem 2rem;
+        background-color: #ffffff;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+        cursor: pointer;
+        transition: transform 0.2s ease-out, opacity 0.2s ease-out, border-color 0.3s ease, box-shadow 0.3s ease;
+        transform-style: preserve-3d;
+        will-change: transform, opacity;
+        box-sizing: border-box;
+    }
+
+    /* Highlight Active Border for Featured Card (Left card has amber border) */
+    .sk-price-card.is-featured {
+        border-color: #f59e0b;
+        box-shadow: 0 10px 30px rgba(245, 158, 11, 0.08);
+    }
+
+    .sk-price-card:hover {
+        border-color: #d4d4d8;
+        box-shadow: 0 12px 32px rgba(0, 0, 0, 0.08);
+    }
+
+    .sk-price-card.is-featured:hover {
+        border-color: #d97706;
+    }
+
+    /* Radial Glow Layer */
+    .sk-bg-radial {
+        pointer-events: none;
+        position: absolute;
+        inset: 0;
+        border-radius: 1.25rem;
+    }
+
+    .sk-glow-layer {
+        pointer-events: none;
+        position: absolute;
+        inset: 0;
+        border-radius: 1.25rem;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+
+    /* Shimmer Effect */
+    .sk-shimmer-effect {
+        pointer-events: none;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        width: 55%;
+        transform: translateX(-100%) skewX(-12deg);
+        background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.25), transparent);
+        transition: transform 0.7s ease-out;
+    }
+
+    .sk-price-card:hover .sk-shimmer-effect {
+        transform: translateX(280%) skewX(-12deg);
+    }
+
+    /* Header & Pricing Content */
+    .sk-card-header {
+        position: relative;
+        z-index: 10;
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .sk-badge {
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        margin: 0;
+        font-family: inherit;
+    }
+
+    .sk-badge-orange { color: #d97706; }
+    .sk-badge-blue { color: #2563eb; }
+
+    .sk-plan-title {
+        font-size: 28px;
+        font-weight: 700;
+        color: #18181b;
+        letter-spacing: -0.02em;
+        margin: 0;
+        line-height: 1.2;
+        font-family: inherit;
+    }
+
+    .sk-price-box {
+        display: flex;
+        align-items: baseline;
+        gap: 0.35rem;
+        margin-top: 0.75rem;
+    }
+
+    .sk-amount {
+        font-size: 42px;
+        font-weight: 700;
+        color: #09090b;
+        letter-spacing: -0.03em;
+        line-height: 1;
+        font-family: inherit;
+    }
+
+    .sk-period {
+        font-size: 15px;
+        font-weight: 500;
+        color: #71717a;
+        font-family: inherit;
+    }
+
+    /* Bullet List Features */
+    .sk-feature-list {
+        position: relative;
+        z-index: 10;
+        list-style: none;
+        padding: 0;
+        margin: 1.5rem 0 0 0;
+        display: flex;
+        flex-direction: column;
+        gap: 0.85rem;
+    }
+
+    .sk-feature-item {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        font-size: 15px;
+        font-weight: 500;
+        color: #3f3f46;
+        line-height: 1.5;
+        font-family: inherit;
+    }
+
+    .sk-bullet {
+        width: 7px;
+        height: 7px;
+        border-radius: 50%;
+        flex-shrink: 0;
+    }
+
+    .sk-bullet-orange {
+        background-color: #f59e0b;
+        box-shadow: 0 0 8px rgba(245, 158, 11, 0.6);
+    }
+
+    .sk-bullet-blue {
+        background-color: #3b82f6;
+        box-shadow: 0 0 8px rgba(59, 130, 246, 0.6);
+    }
+
+    /* Bottom Hover Line */
+    .sk-bottom-line {
+        pointer-events: none;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        height: 3px;
+        width: 0;
+        border-radius: 9999px;
+        transition: width 0.5s ease;
+    }
+
+    .sk-price-card:hover .sk-bottom-line {
+        width: 100%;
+    }
+</style>
+
+<div class="sk-pricing-grid-wrapper">
+    <div class="sk-pricing-grid" id="sk-pricing-grid">
+
+        <!-- Card 1: CORE / Launchpad -->
+        <div class="sk-price-card is-featured" data-title="CORE Launchpad">
+            <div class="sk-bg-radial"
+                style="background: radial-gradient(ellipse at 20% 20%, rgba(245, 158, 11, 0.08), transparent 65%);">
+            </div>
+            <div class="sk-glow-layer"
+                style="background: radial-gradient(ellipse at 20% 20%, rgba(245, 158, 11, 0.18), transparent 65%);">
+            </div>
+            <div class="sk-shimmer-effect"></div>
+
+            <div>
+                <div class="sk-card-header">
+                    <span class="sk-badge sk-badge-orange">CORE</span>
+                    <h3 class="sk-plan-title">Launchpad</h3>
+                    <div class="sk-price-box">
+                        <span class="sk-amount">$1,197</span>
+                        <span class="sk-period">/ month</span>
+                    </div>
+                </div>
+
+                <ul class="sk-feature-list">
+                    <li class="sk-feature-item">
+                        <span class="sk-bullet sk-bullet-orange"></span>
+                        4 long-form videos
+                    </li>
+                    <li class="sk-feature-item">
+                        <span class="sk-bullet sk-bullet-orange"></span>
+                        8 Shorts
+                    </li>
+                    <li class="sk-feature-item">
+                        <span class="sk-bullet sk-bullet-orange"></span>
+                        Thumbnails, titles, SEO
+                    </li>
+                    <li class="sk-feature-item">
+                        <span class="sk-bullet sk-bullet-orange"></span>
+                        Full channel management
+                    </li>
+                    <li class="sk-feature-item">
+                        <span class="sk-bullet sk-bullet-orange"></span>
+                        Monthly report + strategy call
+                    </li>
+                </ul>
+            </div>
+
+            <div class="sk-bottom-line"
+                style="background: linear-gradient(to right, rgba(245, 158, 11, 0.8), transparent);"></div>
+        </div>
+
+        <!-- Card 2: EXTENDED / Launchpad Plus -->
+        <div class="sk-price-card" data-title="EXTENDED Launchpad Plus">
+            <div class="sk-bg-radial"
+                style="background: radial-gradient(ellipse at 20% 20%, rgba(59, 130, 246, 0.08), transparent 65%);">
+            </div>
+            <div class="sk-glow-layer"
+                style="background: radial-gradient(ellipse at 20% 20%, rgba(59, 130, 246, 0.18), transparent 65%);">
+            </div>
+            <div class="sk-shimmer-effect"></div>
+
+            <div>
+                <div class="sk-card-header">
+                    <span class="sk-badge sk-badge-blue">EXTENDED</span>
+                    <h3 class="sk-plan-title">Launchpad Plus</h3>
+                    <div class="sk-price-box">
+                        <span class="sk-amount">$1,497</span>
+                        <span class="sk-period">/ month</span>
+                    </div>
+                </div>
+
+                <ul class="sk-feature-list">
+                    <li class="sk-feature-item">
+                        <span class="sk-bullet sk-bullet-blue"></span>
+                        Everything in Launchpad
+                    </li>
+                    <li class="sk-feature-item">
+                        <span class="sk-bullet sk-bullet-blue"></span>
+                        12 Shorts instead of 8
+                    </li>
+                    <li class="sk-feature-item">
+                        <span class="sk-bullet sk-bullet-blue"></span>
+                        Monthly funnel or lead-magnet touch-up
+                    </li>
+                    <li class="sk-feature-item">
+                        <span class="sk-bullet sk-bullet-blue"></span>
+                        LinkedIn posts repurposed from each video
+                    </li>
+                </ul>
+            </div>
+
+            <div class="sk-bottom-line"
+                style="background: linear-gradient(to right, rgba(59, 130, 246, 0.8), transparent);"></div>
+        </div>
+
+    </div>
+</div>
+
+<script>
+    (function () {
+        const TILT_MAX = 6;
+        const priceCards = document.querySelectorAll('.sk-price-card');
+
+        priceCards.forEach(card => {
+            const glowLayer = card.querySelector('.sk-glow-layer');
+
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const normX = (e.clientX - rect.left) / rect.width;
+                const normY = (e.clientY - rect.top) / rect.height;
+
+                const rotateX = ((normY - 0.5) * -(TILT_MAX * 2)).toFixed(2);
+                const rotateY = ((normX - 0.5) * (TILT_MAX * 2)).toFixed(2);
+
+                card.style.transform = `perspective(900px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+            });
+
+            card.addEventListener('mouseenter', () => {
+                if (glowLayer) glowLayer.style.opacity = '1';
+
+                const absoluteTitle = card.getAttribute('data-title');
+                priceCards.forEach(sibling => {
+                    if (sibling.getAttribute('data-title') !== absoluteTitle) {
+                        sibling.style.opacity = '0.6';
+                        sibling.style.transform = 'scale(0.98)';
+                    }
+                });
+            });
+
+            card.addEventListener('mouseleave', () => {
+                if (glowLayer) glowLayer.style.opacity = '0';
+                card.style.transform = `perspective(900px) rotateX(0deg) rotateY(0deg)`;
+
+                priceCards.forEach(sibling => {
+                    sibling.style.opacity = '1';
+                    sibling.style.transform = 'scale(1)';
+                });
+            });
+        });
+    })();
+</script>

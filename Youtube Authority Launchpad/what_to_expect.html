@@ -1,0 +1,327 @@
+<style>
+    /* Section & Container Setup */
+    .sk-timeline-section {
+        width: 100%;
+        max-width: 1200px;
+        margin: 0 auto;
+        box-sizing: border-box;
+        font-family: inherit;
+    }
+
+    .sk-timeline-container {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        gap: 3rem;
+    }
+
+    /* Central Vertical Line */
+    .sk-timeline-container::before {
+        content: '';
+        position: absolute;
+        top: 2rem;
+        bottom: 2rem;
+        left: 50%;
+        width: 2px;
+        background: linear-gradient(180deg, #2563eb 0%, #0d9488 50%, #10b981 100%);
+        transform: translateX(-50%);
+        opacity: 0.4;
+        z-index: 1;
+    }
+
+    /* Timeline Row Base */
+    .sk-timeline-row {
+        position: relative;
+        display: flex;
+        width: 100%;
+        z-index: 10;
+    }
+
+    .sk-timeline-row.left {
+        justify-content: flex-start;
+    }
+
+    .sk-timeline-row.right {
+        justify-content: flex-end;
+    }
+
+    /* Step Badge (Node) */
+    .sk-timeline-node {
+        position: absolute;
+        top: 2rem;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 44px;
+        height: 44px;
+        border-radius: 12px;
+        background: #C1892C;
+        border: 2px solid #a8731d;
+        color: #ffffff;
+        font-size: 15px;
+        font-weight: 700;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 20;
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease;
+    }
+
+    .sk-timeline-node.success {
+        background: #10b981;
+        border-color: #34d399;
+        color: #ffffff;
+        box-shadow: 0 0 20px rgba(16, 185, 129, 0.4);
+    }
+
+
+    /* Card Box */
+    .sk-timeline-card-wrapper {
+        width: 45%;
+    }
+
+    .sk-timeline-card {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+        overflow: hidden;
+        border-radius: 1rem;
+        border: 1px solid #e4e4e7;
+        padding: 2rem;
+        background-color: #ffffff;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+        transition: transform 0.2s ease-out, opacity 0.2s ease-out, border-color 0.3s ease;
+        transform-style: preserve-3d;
+        will-change: transform;
+        box-sizing: border-box;
+    }
+
+    .sk-timeline-card:hover {
+        border-color: #d4d4d8;
+    }
+
+    /* Effects Inside Card */
+    .sk-tl-bg-radial {
+        pointer-events: none;
+        position: absolute;
+        inset: 0;
+        border-radius: 1rem;
+    }
+
+    .sk-tl-glow-layer {
+        pointer-events: none;
+        position: absolute;
+        inset: 0;
+        border-radius: 1rem;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+
+    .sk-tl-shimmer {
+        pointer-events: none;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        width: 60%;
+        transform: translateX(-100%) skewX(-12deg);
+        background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.2), transparent);
+        transition: transform 0.7s ease-out;
+    }
+
+    .sk-timeline-card:hover .sk-tl-shimmer {
+        transform: translateX(280%) skewX(-12deg);
+    }
+
+    /* Typography & Content */
+    .sk-tl-content {
+        position: relative;
+        z-index: 10;
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .sk-tl-title {
+        font-size: 20px;
+        font-weight: 700;
+        color: #18181b;
+        margin: 0;
+        line-height: 1.3;
+    }
+
+    .sk-tl-desc {
+        font-size: 14px;
+        color: #52525b;
+        line-height: 1.6;
+        margin: 0;
+    }
+
+    .sk-tl-tag {
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        margin-top: 0.25rem;
+        display: flex;
+        align-items: center;
+        gap: 0.4rem;
+    }
+
+    .sk-tl-tag::before {
+        content: "";
+        width: 5px;
+        height: 5px;
+        border-radius: 50%;
+        display: inline-block;
+        background-color: currentColor;
+    }
+
+    .sk-tl-bottom-line {
+        pointer-events: none;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        height: 2px;
+        width: 0;
+        border-radius: 9999px;
+        transition: width 0.5s ease;
+    }
+
+    .sk-timeline-card:hover .sk-tl-bottom-line {
+        width: 100%;
+    }
+
+    /* Responsive Design (Mobile / Tablet) */
+    @media (max-width: 768px) {
+        .sk-timeline-container::before {
+            left: 20px;
+            transform: translateX(0);
+        }
+
+        .sk-timeline-row.left,
+        .sk-timeline-row.right {
+            justify-content: flex-end;
+        }
+
+        .sk-timeline-node {
+            left: 20px;
+            transform: translate(-50%, -50%);
+        }
+
+        .sk-timeline-row:hover .sk-timeline-node {
+            transform: translate(-50%, -50%) scale(1.1);
+        }
+
+        .sk-timeline-card-wrapper {
+            width: calc(100% - 50px);
+        }
+    }
+</style>
+
+<div class="sk-timeline-section">
+    <div class="sk-timeline-container">
+
+        <!-- Step 1 (Left) -->
+        <div class="sk-timeline-row left">
+            <div class="sk-timeline-node">1</div>
+            <div class="sk-timeline-card-wrapper">
+                <div class="sk-timeline-card">
+                    <div class="sk-tl-bg-radial"
+                        style="background: radial-gradient(ellipse at 20% 20%, rgba(37, 99, 235, 0.08), transparent 65%);">
+                    </div>
+                    <div class="sk-tl-glow-layer"
+                        style="background: radial-gradient(ellipse at 20% 20%, rgba(37, 99, 235, 0.18), transparent 65%);">
+                    </div>
+                    <div class="sk-tl-shimmer"></div>
+                    <div class="sk-tl-content">
+                        <span class="sk-tl-tag" style="color: #101bb9;">Month 1</span>
+                        <h3 class="sk-tl-title">Your channel stops looking abandoned</h3>
+                        <p class="sk-tl-desc">Positioning set, channel optimised, publishing begins on a schedule that doesn't depend on your free time.</p>
+                    </div>
+                    <div class="sk-tl-bottom-line"
+                        style="background: linear-gradient(to right, rgba(37, 99, 235, 0.6), transparent);"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Step 2 (Right) -->
+        <div class="sk-timeline-row right">
+            <div class="sk-timeline-node">2</div>
+            <div class="sk-timeline-card-wrapper">
+                <div class="sk-timeline-card">
+                    <div class="sk-tl-bg-radial"
+                        style="background: radial-gradient(ellipse at 20% 20%, rgba(13, 148, 136, 0.08), transparent 65%);">
+                    </div>
+                    <div class="sk-tl-glow-layer"
+                        style="background: radial-gradient(ellipse at 20% 20%, rgba(13, 148, 136, 0.18), transparent 65%);">
+                    </div>
+                    <div class="sk-tl-shimmer"></div>
+                    <div class="sk-tl-content">
+                        <span class="sk-tl-tag" style="color: #10b981;">Months 2-3</span>
+                        <h3 class="sk-tl-title">People who look you up find something</h3>
+                        <p class="sk-tl-desc">The library builds. Prospects researching you before a call find an active, credible expert instead of an empty page.
+                        </p>
+                    </div>
+                    <div class="sk-tl-bottom-line"
+                        style="background: linear-gradient(to right, rgba(13, 148, 136, 0.6), transparent);"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Step 3 (Left) -->
+        <div class="sk-timeline-row left">
+            <div class="sk-timeline-node">3</div>
+            <div class="sk-timeline-card-wrapper">
+                <div class="sk-timeline-card">
+                    <div class="sk-tl-bg-radial"
+                        style="background: radial-gradient(ellipse at 20% 20%, rgba(79, 70, 229, 0.08), transparent 65%);">
+                    </div>
+                    <div class="sk-tl-glow-layer"
+                        style="background: radial-gradient(ellipse at 20% 20%, rgba(79, 70, 229, 0.18), transparent 65%);">
+                    </div>
+                    <div class="sk-tl-shimmer"></div>
+                    <div class="sk-tl-content">
+                        <span class="sk-tl-tag" style="color: #6710b9;">Months 4-6</span>
+                        <h3 class="sk-tl-title">Search starts doing the work</h3>
+                        <p class="sk-tl-desc">Your best videos get found on their own, answering objections and warming people up before they ever speak to you.</p>
+                    </div>
+                    <div class="sk-tl-bottom-line"
+                        style="background: linear-gradient(to right, rgba(79, 70, 229, 0.6), transparent);"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    (function () {
+        const TILT_MAX = 5;
+        const cards = document.querySelectorAll('.sk-timeline-card');
+
+        cards.forEach(card => {
+            const glowLayer = card.querySelector('.sk-tl-glow-layer');
+
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const normX = (e.clientX - rect.left) / rect.width;
+                const normY = (e.clientY - rect.top) / rect.height;
+
+                const rotateX = ((normY - 0.5) * -(TILT_MAX * 2)).toFixed(2);
+                const rotateY = ((normX - 0.5) * (TILT_MAX * 2)).toFixed(2);
+
+                card.style.transform = `perspective(900px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+            });
+
+            card.addEventListener('mouseenter', () => {
+                if (glowLayer) glowLayer.style.opacity = '1';
+            });
+
+            card.addEventListener('mouseleave', () => {
+                if (glowLayer) glowLayer.style.opacity = '0';
+                card.style.transform = `perspective(900px) rotateX(0deg) rotateY(0deg)`;
+            });
+        });
+    })();
+</script>

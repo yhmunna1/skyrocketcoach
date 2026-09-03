@@ -1,0 +1,405 @@
+<style>
+    /* Container Grid */
+    .sk-card-grid-wrapper {
+        width: 100%;
+        max-width: 1450px;
+        margin: 0 auto;
+        box-sizing: border-box;
+    }
+
+    .sk-card-grid {
+        display: grid;
+        grid-template-columns: repeat(1, minmax(0, 1fr));
+        gap: 1rem;
+        position: relative;
+        z-index: 10;
+    }
+
+    @media (min-width: 640px) {
+        .sk-card-grid {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+    }
+
+    /* Base Feature Card */
+    .sk-feature-card {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        gap: 1.25rem;
+        overflow: hidden;
+        border-radius: 1rem;
+        border: 1px solid #e4e4e7;
+        padding: 1.5rem;
+        background-color: #ffffff;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+        cursor: pointer;
+        transition: transform 0.18s ease-out, opacity 0.18s ease-out, border-color 0.3s ease;
+        transform-style: preserve-3d;
+        will-change: transform, opacity;
+        box-sizing: border-box;
+    }
+
+    .sk-feature-card:hover {
+        border-color: #d4d4d8;
+    }
+
+    /* Radial & Glow Layers */
+    .sk-bg-radial {
+        pointer-events: none;
+        position: absolute;
+        inset: 0;
+        border-radius: 1rem;
+    }
+
+    .sk-glow-layer {
+        pointer-events: none;
+        position: absolute;
+        inset: 0;
+        border-radius: 1rem;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+
+    /* Shimmer / Flare Effect */
+    .sk-shimmer-effect {
+        pointer-events: none;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        width: 55%;
+        transform: translateX(-100%) skewX(-12deg);
+        background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.15), transparent);
+        transition: transform 0.7s ease-out;
+    }
+
+    .sk-feature-card:hover .sk-shimmer-effect {
+        transform: translateX(280%) skewX(-12deg);
+    }
+
+    /* Icon Box Setup */
+    .sk-icon-box {
+        position: relative;
+        z-index: 10;
+        display: flex;
+        height: 2.5rem;
+        width: 2.5rem;
+        align-items: center;
+        justify-content: center;
+        border-radius: 0.75rem;
+    }
+
+    /* Content Styling */
+    .sk-card-content {
+        position: relative;
+        z-index: 10;
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .sk-card-title {
+        font-size: 22px;
+        font-weight: 600;
+        color: #18181b;
+        letter-spacing: -0.015em;
+        margin: 0;
+        line-height: 1.3;
+        font-family: inherit;
+    }
+
+    .sk-card-desc {
+        font-size: 14px;
+        color: #71717a;
+        line-height: 1.6;
+        margin: 0;
+        font-family: inherit;
+    }
+
+    /* Bottom Hover Line */
+    .sk-bottom-line {
+        pointer-events: none;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        height: 2px;
+        width: 0;
+        border-radius: 9999px;
+        transition: width 0.5s ease;
+    }
+
+    .sk-feature-card:hover .sk-bottom-line {
+        width: 100%;
+    }
+</style>
+
+<div class="sk-card-grid-wrapper">
+    <div class="sk-card-grid" id="sk-card-grid">
+
+        <!-- Card 1: 4 long-form videos a month -->
+        <div class="sk-feature-card" data-title="4 long-form videos a month">
+            <div class="sk-bg-radial"
+                style="background: radial-gradient(ellipse at 20% 20%, rgba(245, 158, 11, 0.08), transparent 65%);">
+            </div>
+            <div class="sk-glow-layer"
+                style="background: radial-gradient(ellipse at 20% 20%, rgba(245, 158, 11, 0.18), transparent 65%);">
+            </div>
+            <div class="sk-shimmer-effect"></div>
+            <div class="sk-icon-box"
+                style="background: rgba(245, 158, 11, 0.09); box-shadow: inset 0 0 0 1px rgba(245, 158, 11, 0.19);">
+                <!-- Long-form Video / Camera Icon -->
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                    stroke="#f59e0b" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="2" y="4" width="20" height="16" rx="3" />
+                    <polygon points="10 9 15 12 10 15 10 9" />
+                </svg>
+            </div>
+            <div class="sk-card-content">
+                <h3 class="sk-card-title">4 long-form videos a month</h3>
+                <p class="sk-card-desc">Researched, outlined, edited and branded.</p>
+            </div>
+            <div class="sk-bottom-line"
+                style="background: linear-gradient(to right, rgba(245, 158, 11, 0.5), transparent);"></div>
+        </div>
+
+        <!-- Card 2: 8–12 Shorts a month -->
+        <div class="sk-feature-card" data-title="8–12 Shorts a month">
+            <div class="sk-bg-radial"
+                style="background: radial-gradient(ellipse at 20% 20%, rgba(96, 165, 250, 0.08), transparent 65%);">
+            </div>
+            <div class="sk-glow-layer"
+                style="background: radial-gradient(ellipse at 20% 20%, rgba(96, 165, 250, 0.18), transparent 65%);">
+            </div>
+            <div class="sk-shimmer-effect"></div>
+            <div class="sk-icon-box"
+                style="background: rgba(96, 165, 250, 0.09); box-shadow: inset 0 0 0 1px rgba(96, 165, 250, 0.19);">
+                <!-- Shorts / Vertical Video Mobile Icon -->
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                    stroke="#60a5fa" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="6" y="2" width="12" height="20" rx="3" />
+                    <polygon points="10 9 14 12 10 15 10 9" />
+                </svg>
+            </div>
+            <div class="sk-card-content">
+                <h3 class="sk-card-title">8–12 Shorts a month</h3>
+                <p class="sk-card-desc">Cut from your strongest moments.</p>
+            </div>
+            <div class="sk-bottom-line"
+                style="background: linear-gradient(to right, rgba(96, 165, 250, 0.5), transparent);"></div>
+        </div>
+
+        <!-- Card 3: Custom thumbnails -->
+        <div class="sk-feature-card" data-title="Custom thumbnails">
+            <div class="sk-bg-radial"
+                style="background: radial-gradient(ellipse at 20% 20%, rgba(52, 211, 153, 0.08), transparent 65%);">
+            </div>
+            <div class="sk-glow-layer"
+                style="background: radial-gradient(ellipse at 20% 20%, rgba(52, 211, 153, 0.18), transparent 65%);">
+            </div>
+            <div class="sk-shimmer-effect"></div>
+            <div class="sk-icon-box"
+                style="background: rgba(52, 211, 153, 0.09); box-shadow: inset 0 0 0 1px rgba(52, 211, 153, 0.19);">
+                <!-- Image Canvas / Design Brush Icon -->
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                    stroke="#34d399" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="3" y="3" width="18" height="18" rx="2" ry="2" />
+                    <circle cx="8.5" cy="8.5" r="1.5" />
+                    <polyline points="21 15 16 10 5 21" />
+                </svg>
+            </div>
+            <div class="sk-card-content">
+                <h3 class="sk-card-title">Custom thumbnails</h3>
+                <p class="sk-card-desc">Clear and credible. Designed for your niche, not clickbait.</p>
+            </div>
+            <div class="sk-bottom-line"
+                style="background: linear-gradient(to right, rgba(52, 211, 153, 0.5), transparent);"></div>
+        </div>
+
+        <!-- Card 4: Titles, descriptions & SEO -->
+        <div class="sk-feature-card" data-title="Titles, descriptions & SEO">
+            <div class="sk-bg-radial"
+                style="background: radial-gradient(ellipse at 20% 20%, rgba(167, 139, 250, 0.08), transparent 65%);">
+            </div>
+            <div class="sk-glow-layer"
+                style="background: radial-gradient(ellipse at 20% 20%, rgba(167, 139, 250, 0.18), transparent 65%);">
+            </div>
+            <div class="sk-shimmer-effect"></div>
+            <div class="sk-icon-box"
+                style="background: rgba(167, 139, 250, 0.09); box-shadow: inset 0 0 0 1px rgba(167, 139, 250, 0.19);">
+                <!-- Search / SEO Optimization Icon -->
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                    stroke="#a78bfa" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                    <polyline points="14 2 14 8 20 8" />
+                    <line x1="16" y1="13" x2="8" y2="13" />
+                    <line x1="16" y1="17" x2="8" y2="17" />
+                    <polyline points="10 9 9 9 8 9" />
+                </svg>
+            </div>
+            <div class="sk-card-content">
+                <h3 class="sk-card-title">Titles, descriptions & SEO</h3>
+                <p class="sk-card-desc">Written around what your buyers actually search.</p>
+            </div>
+            <div class="sk-bottom-line"
+                style="background: linear-gradient(to right, rgba(167, 139, 250, 0.5), transparent);"></div>
+        </div>
+
+        <!-- Card 5: Full channel management -->
+        <div class="sk-feature-card" data-title="Full channel management">
+            <div class="sk-bg-radial"
+                style="background: radial-gradient(ellipse at 20% 20%, rgba(244, 63, 94, 0.08), transparent 65%);">
+            </div>
+            <div class="sk-glow-layer"
+                style="background: radial-gradient(ellipse at 20% 20%, rgba(244, 63, 94, 0.18), transparent 65%);">
+            </div>
+            <div class="sk-shimmer-effect"></div>
+            <div class="sk-icon-box"
+                style="background: rgba(244, 63, 94, 0.09); box-shadow: inset 0 0 0 1px rgba(244, 63, 94, 0.19);">
+                <!-- Channel Control / Dashboard Settings Icon -->
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                    stroke="#f43f5e" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="4" y1="21" x2="4" y2="14" />
+                    <line x1="4" y1="10" x2="4" y2="3" />
+                    <line x1="12" y1="21" x2="12" y2="12" />
+                    <line x1="12" y1="8" x2="12" y2="3" />
+                    <line x1="20" y1="21" x2="20" y2="16" />
+                    <line x1="20" y1="12" x2="20" y2="3" />
+                    <line x1="1" y1="14" x2="7" y2="14" />
+                    <line x1="9" y1="8" x2="15" y2="8" />
+                    <line x1="17" y1="16" x2="23" y2="16" />
+                </svg>
+            </div>
+            <div class="sk-card-content">
+                <h3 class="sk-card-title">Full channel management</h3>
+                <p class="sk-card-desc">Uploads, playlists, channel page, consistent schedule.</p>
+            </div>
+            <div class="sk-bottom-line"
+                style="background: linear-gradient(to right, rgba(244, 63, 94, 0.5), transparent);"></div>
+        </div>
+
+        <!-- Card 6: Calls-to-action that lead somewhere -->
+        <div class="sk-feature-card" data-title="Calls-to-action that lead somewhere">
+            <div class="sk-bg-radial"
+                style="background: radial-gradient(ellipse at 20% 20%, rgba(6, 182, 212, 0.08), transparent 65%);">
+            </div>
+            <div class="sk-glow-layer"
+                style="background: radial-gradient(ellipse at 20% 20%, rgba(6, 182, 212, 0.18), transparent 65%);">
+            </div>
+            <div class="sk-shimmer-effect"></div>
+            <div class="sk-icon-box"
+                style="background: rgba(6, 182, 212, 0.09); box-shadow: inset 0 0 0 1px rgba(6, 182, 212, 0.19);">
+                <!-- CTA / External Target Link Icon -->
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                    stroke="#06b6d4" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+                    <polyline points="15 3 21 3 21 9" />
+                    <line x1="10" y1="14" x2="21" y2="3" />
+                </svg>
+            </div>
+            <div class="sk-card-content">
+                <h3 class="sk-card-title">Calls-to-action that lead somewhere</h3>
+                <p class="sk-card-desc">We're available after launch for fixes, updates, and small changes.</p>
+            </div>
+            <div class="sk-bottom-line"
+                style="background: linear-gradient(to right, rgba(6, 182, 212, 0.5), transparent);"></div>
+        </div>
+
+        <!-- Card 7: Monthly report -->
+        <div class="sk-feature-card" data-title="Monthly report">
+            <div class="sk-bg-radial"
+                style="background: radial-gradient(ellipse at 20% 20%, rgba(99, 102, 241, 0.08), transparent 65%);">
+            </div>
+            <div class="sk-glow-layer"
+                style="background: radial-gradient(ellipse at 20% 20%, rgba(99, 102, 241, 0.18), transparent 65%);">
+            </div>
+            <div class="sk-shimmer-effect"></div>
+            <div class="sk-icon-box"
+                style="background: rgba(99, 102, 241, 0.09); box-shadow: inset 0 0 0 1px rgba(99, 102, 241, 0.19);">
+                <!-- Monthly Analytics Report Icon -->
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                    stroke="#6366f1" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="18" y1="20" x2="18" y2="10" />
+                    <line x1="12" y1="20" x2="12" y2="4" />
+                    <line x1="6" y1="20" x2="6" y2="14" />
+                </svg>
+            </div>
+            <div class="sk-card-content">
+                <h3 class="sk-card-title">Monthly report</h3>
+                <p class="sk-card-desc">What worked, what didn't, what we're changing. In plain English.</p>
+            </div>
+            <div class="sk-bottom-line"
+                style="background: linear-gradient(to right, rgba(99, 102, 241, 0.5), transparent);"></div>
+        </div>
+
+        <!-- Card 8: A monthly strategy call -->
+        <div class="sk-feature-card" data-title="A monthly strategy call">
+            <div class="sk-bg-radial"
+                style="background: radial-gradient(ellipse at 20% 20%, rgba(139, 92, 246, 0.08), transparent 65%);">
+            </div>
+            <div class="sk-glow-layer"
+                style="background: radial-gradient(ellipse at 20% 20%, rgba(139, 92, 246, 0.18), transparent 65%);">
+            </div>
+            <div class="sk-shimmer-effect"></div>
+            <div class="sk-icon-box"
+                style="background: rgba(139, 92, 246, 0.09); box-shadow: inset 0 0 0 1px rgba(139, 92, 246, 0.19);">
+                <!-- Strategy Call / Discussion Icon -->
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                    stroke="#8b5cf6" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+                </svg>
+            </div>
+            <div class="sk-card-content">
+                <h3 class="sk-card-title">A monthly strategy call</h3>
+                <p class="sk-card-desc">Thirty minutes. That plus recording is your whole commitment.</p>
+            </div>
+            <div class="sk-bottom-line"
+                style="background: linear-gradient(to right, rgba(139, 92, 246, 0.5), transparent);"></div>
+        </div>
+
+    </div>
+</div>
+
+<script>
+    (function () {
+        const TILT_MAX = 8;
+        const cards = document.querySelectorAll('.sk-feature-card');
+
+        cards.forEach(card => {
+            const glowLayer = card.querySelector('.sk-glow-layer');
+
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const normX = (e.clientX - rect.left) / rect.width;
+                const normY = (e.clientY - rect.top) / rect.height;
+
+                const rotateX = ((normY - 0.5) * -(TILT_MAX * 2)).toFixed(2);
+                const rotateY = ((normX - 0.5) * (TILT_MAX * 2)).toFixed(2);
+
+                card.style.transform = `perspective(900px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+            });
+
+            card.addEventListener('mouseenter', () => {
+                if (glowLayer) glowLayer.style.opacity = '1';
+
+                const absoluteTitle = card.getAttribute('data-title');
+                cards.forEach(sibling => {
+                    if (sibling.getAttribute('data-title') !== absoluteTitle) {
+                        sibling.style.opacity = '0.5';
+                        sibling.style.transform = 'scale(0.97)';
+                    }
+                });
+            });
+
+            card.addEventListener('mouseleave', () => {
+                if (glowLayer) glowLayer.style.opacity = '0';
+                card.style.transform = `perspective(900px) rotateX(0deg) rotateY(0deg)`;
+
+                cards.forEach(sibling => {
+                    sibling.style.opacity = '1';
+                    sibling.style.transform = 'scale(1)';
+                });
+            });
+        });
+    })();
+</script>
