@@ -1,0 +1,295 @@
+<style>
+    /* Global Carousel Wrapper */
+    .sk-carousel-wrapper {
+        position: relative;
+        width: 100%;
+        max-width: 1450px;
+        margin: 0 auto 40px auto;
+        padding: 10px 0;
+        box-sizing: border-box;
+    }
+
+    /* Scrollable Track Container */
+    .sk-carousel-track-container {
+        overflow-x: auto;
+        width: 100%;
+        border-radius: 1rem;
+        scroll-behavior: smooth;
+        -webkit-overflow-scrolling: touch;
+        /* Hide Scrollbar */
+        scrollbar-width: none; /* Firefox */
+        -ms-overflow-style: none;  /* IE and Edge */
+    }
+
+    .sk-carousel-track-container::-webkit-scrollbar {
+        display: none; /* Chrome, Safari, Opera */
+    }
+
+    .sk-carousel-track {
+        display: flex;
+        gap: 1.25rem;
+        padding: 10px 5px;
+    }
+
+    /* Video Card Base */
+    .sk-video-card {
+        flex: 0 0 calc((100% - (1.25rem * 2)) / 3);
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        overflow: hidden;
+        border-radius: 1rem;
+        border: 1px solid #e4e4e7;
+        padding: 1.25rem;
+        background-color: #ffffff;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+        transition: transform 0.18s ease-out, opacity 0.18s ease-out, border-color 0.3s ease;
+        transform-style: preserve-3d;
+        will-change: transform, opacity;
+        box-sizing: border-box;
+    }
+
+    .sk-video-card:hover {
+        border-color: #d4d4d8;
+    }
+
+    /* Aspect Ratios */
+    .sk-video-frame-box {
+        position: relative;
+        width: 100%;
+        border-radius: 0.75rem;
+        overflow: hidden;
+        z-index: 10;
+        background: #000;
+    }
+
+    /* Regular 16:9 Aspect Ratio */
+    .sk-ratio-16-9 {
+        padding-top: 56.25%;
+    }
+
+    /* Shorts 9:16 Aspect Ratio */
+    .sk-ratio-9-16 {
+        padding-top: 177.78%;
+    }
+
+    .sk-video-frame-box iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border: 0;
+    }
+
+    /* Effects & Layering */
+    .sk-bg-radial, .sk-glow-layer {
+        pointer-events: none;
+        position: absolute;
+        inset: 0;
+        border-radius: 1rem;
+    }
+
+    .sk-glow-layer {
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+
+    .sk-shimmer-effect {
+        pointer-events: none;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        width: 55%;
+        transform: translateX(-100%) skewX(-12deg);
+        background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.25), transparent);
+        transition: transform 0.7s ease-out;
+        z-index: 12;
+    }
+
+    .sk-video-card:hover .sk-shimmer-effect {
+        transform: translateX(280%) skewX(-12deg);
+    }
+
+    .sk-card-content {
+        position: relative;
+        z-index: 10;
+        display: flex;
+        flex-direction: column;
+        gap: 0.35rem;
+    }
+
+    .sk-card-title {
+        font-size: 18px;
+        font-weight: 600;
+        color: #18181b;
+        margin: 0;
+        line-height: 1.3;
+        font-family: inherit;
+    }
+
+    .sk-card-desc {
+        font-size: 13px;
+        color: #71717a;
+        margin: 0;
+        line-height: 1.5;
+        font-family: inherit;
+    }
+
+    .sk-bottom-line {
+        pointer-events: none;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        height: 2px;
+        width: 0;
+        border-radius: 9999px;
+        transition: width 0.5s ease;
+    }
+
+    .sk-video-card:hover .sk-bottom-line {
+        width: 100%;
+    }
+
+    /* Responsiveness */
+    @media (max-width: 1024px) {
+        .sk-video-card {
+            flex: 0 0 calc((100% - 1.25rem) / 2);
+        }
+    }
+
+    @media (max-width: 640px) {
+        .sk-video-card {
+            flex: 0 0 85%; /* Mobile-এ স্ক্রোল সহজ করার জন্য কিছুটা মার্জিন রাখা হয়েছে */
+        }
+    }
+</style>
+
+<!-- SECTION 1: REGULAR VIDEOS (16:9) -->
+<div class="sk-carousel-wrapper">
+    <div class="sk-carousel-track-container">
+        <div class="sk-carousel-track">
+            <!-- VIDEO CARD 1 -->
+            <div class="sk-video-card" data-title="Video Project 1">
+                <div class="sk-bg-radial" style="background: radial-gradient(ellipse at 20% 20%, rgba(245, 158, 11, 0.08), transparent 65%);"></div>
+                <div class="sk-glow-layer" style="background: radial-gradient(ellipse at 20% 20%, rgba(245, 158, 11, 0.18), transparent 65%);"></div>
+                <div class="sk-shimmer-effect"></div>
+                <div class="sk-video-frame-box sk-ratio-16-9">
+                    <iframe src="https://www.youtube.com/embed/8eLW5C_1bxI?si=Qfg8SJYTx-V4JYYZ" title="YouTube video player" allowfullscreen></iframe>
+                </div>
+                <div class="sk-bottom-line" style="background: linear-gradient(to right, rgba(245, 158, 11, 0.8), transparent);"></div>
+            </div>
+
+            <!-- VIDEO CARD 2 -->
+            <div class="sk-video-card" data-title="Video Project 2">
+                <div class="sk-bg-radial" style="background: radial-gradient(ellipse at 20% 20%, rgba(96, 165, 250, 0.08), transparent 65%);"></div>
+                <div class="sk-glow-layer" style="background: radial-gradient(ellipse at 20% 20%, rgba(96, 165, 250, 0.18), transparent 65%);"></div>
+                <div class="sk-shimmer-effect"></div>
+                <div class="sk-video-frame-box sk-ratio-16-9">
+                    <iframe src="https://www.youtube.com/embed/yyoCkCr9Rrk?si=1cJI3n7I7ASCV0pf" title="YouTube video player" allowfullscreen></iframe>
+                </div>
+                <div class="sk-bottom-line" style="background: linear-gradient(to right, rgba(96, 165, 250, 0.8), transparent);"></div>
+            </div>
+
+            <!-- VIDEO CARD 3 -->
+            <div class="sk-video-card" data-title="Video Project 3">
+                <div class="sk-bg-radial" style="background: radial-gradient(ellipse at 20% 20%, rgba(52, 211, 153, 0.08), transparent 65%);"></div>
+                <div class="sk-glow-layer" style="background: radial-gradient(ellipse at 20% 20%, rgba(52, 211, 153, 0.18), transparent 65%);"></div>
+                <div class="sk-shimmer-effect"></div>
+                <div class="sk-video-frame-box sk-ratio-16-9">
+                    <iframe src="https://www.youtube.com/embed/hLmO1y9TV7M?si=n8OIQS3QNCUEGIqP" title="YouTube video player" allowfullscreen></iframe>
+                </div>
+                <div class="sk-bottom-line" style="background: linear-gradient(to right, rgba(52, 211, 153, 0.8), transparent);"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- SECTION 2: SHORTS / VERTICAL VIDEOS (9:16) -->
+<div class="sk-carousel-wrapper">
+    <div class="sk-carousel-track-container">
+        <div class="sk-carousel-track">
+            <!-- SHORTS CARD 1 -->
+            <div class="sk-video-card" data-title="Shorts Project 1">
+                <div class="sk-bg-radial" style="background: radial-gradient(ellipse at 20% 20%, rgba(245, 158, 11, 0.08), transparent 65%);"></div>
+                <div class="sk-glow-layer" style="background: radial-gradient(ellipse at 20% 20%, rgba(245, 158, 11, 0.18), transparent 65%);"></div>
+                <div class="sk-shimmer-effect"></div>
+                <div class="sk-video-frame-box sk-ratio-9-16">
+                    <iframe src="https://www.youtube.com/embed/5NN5Vj6W6o0" title="YouTube Shorts player" allowfullscreen></iframe>
+                </div>
+                <div class="sk-bottom-line" style="background: linear-gradient(to right, rgba(245, 158, 11, 0.8), transparent);"></div>
+            </div>
+
+            <!-- SHORTS CARD 2 -->
+            <div class="sk-video-card" data-title="Shorts Project 2">
+                <div class="sk-bg-radial" style="background: radial-gradient(ellipse at 20% 20%, rgba(96, 165, 250, 0.08), transparent 65%);"></div>
+                <div class="sk-glow-layer" style="background: radial-gradient(ellipse at 20% 20%, rgba(96, 165, 250, 0.18), transparent 65%);"></div>
+                <div class="sk-shimmer-effect"></div>
+                <div class="sk-video-frame-box sk-ratio-9-16">
+                    <iframe src="https://www.youtube.com/embed/walleiKbycA" title="YouTube Shorts player" allowfullscreen></iframe>
+                </div>
+                <div class="sk-bottom-line" style="background: linear-gradient(to right, rgba(96, 165, 250, 0.8), transparent);"></div>
+            </div>
+
+            <!-- SHORTS CARD 3 -->
+            <div class="sk-video-card" data-title="Shorts Project 3">
+                <div class="sk-bg-radial" style="background: radial-gradient(ellipse at 20% 20%, rgba(52, 211, 153, 0.08), transparent 65%);"></div>
+                <div class="sk-glow-layer" style="background: radial-gradient(ellipse at 20% 20%, rgba(52, 211, 153, 0.18), transparent 65%);"></div>
+                <div class="sk-shimmer-effect"></div>
+                <div class="sk-video-frame-box sk-ratio-9-16">
+                    <iframe src="https://www.youtube.com/embed/go_m00bZ2KE" title="YouTube Shorts player" allowfullscreen></iframe>
+                </div>
+                <div class="sk-bottom-line" style="background: linear-gradient(to right, rgba(52, 211, 153, 0.8), transparent);"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    (function () {
+        const carouselWrappers = document.querySelectorAll('.sk-carousel-wrapper');
+
+        carouselWrappers.forEach(carousel => {
+            const cards = carousel.querySelectorAll('.sk-video-card');
+            const TILT_MAX = 6;
+
+            cards.forEach(card => {
+                const glowLayer = card.querySelector('.sk-glow-layer');
+
+                card.addEventListener('mousemove', (e) => {
+                    const rect = card.getBoundingClientRect();
+                    const normX = (e.clientX - rect.left) / rect.width;
+                    const normY = (e.clientY - rect.top) / rect.height;
+
+                    const rotateX = ((normY - 0.5) * -(TILT_MAX * 2)).toFixed(2);
+                    const rotateY = ((normX - 0.5) * (TILT_MAX * 2)).toFixed(2);
+
+                    card.style.transform = `perspective(900px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+                });
+
+                card.addEventListener('mouseenter', () => {
+                    if (glowLayer) glowLayer.style.opacity = '1';
+
+                    const currentTitle = card.getAttribute('data-title');
+                    cards.forEach(sibling => {
+                        if (sibling.getAttribute('data-title') !== currentTitle) {
+                            sibling.style.opacity = '0.65';
+                        }
+                    });
+                });
+
+                card.addEventListener('mouseleave', () => {
+                    if (glowLayer) glowLayer.style.opacity = '0';
+                    card.style.transform = `perspective(900px) rotateX(0deg) rotateY(0deg)`;
+
+                    cards.forEach(sibling => {
+                        sibling.style.opacity = '1';
+                    });
+                });
+            });
+        });
+    })();
+</script>
