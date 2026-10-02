@@ -1,0 +1,253 @@
+<style>
+    /* Full Width Section Wrapper */
+    .sk-story-section {
+        width: 100%;
+        max-width: 1450px;
+        margin: 0 auto;
+        box-sizing: border-box;
+    }
+
+    /* Grid Container Centered */
+    .sk-story-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1.5rem;
+        justify-content: center;
+        align-items: stretch;
+    }
+
+    @media (min-width: 1025px) {
+        .sk-story-card-center {
+            grid-column: 2;
+        }
+    }
+
+    @media (max-width: 1024px) and (min-width: 641px) {
+        .sk-story-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+        .sk-story-card-center {
+            grid-column: 1 / -1;
+            max-width: 500px;
+            justify-self: center;
+        }
+    }
+
+    @media (max-width: 640px) {
+        .sk-story-grid {
+            grid-template-columns: 1fr;
+            max-width: 500px;
+            margin: 0 auto;
+            gap: 1.25rem;
+        }
+        .sk-story-card-center {
+            grid-column: auto;
+        }
+    }
+
+    /* Individual Card Setup */
+    .sk-story-card {
+        position: relative;
+        background: #ffffff;
+        border: 1px solid #e4e4e7;
+        border-radius: 1.25rem;
+        padding: 2rem;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+        transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+        text-align: left;
+        box-sizing: border-box;
+        -webkit-tap-highlight-color: transparent;
+        width: 100%;
+    }
+
+    .sk-story-card:hover {
+        transform: translateY(-4px);
+        border-color: #d4d4d8;
+        background-color: #fafafa;
+        box-shadow: 0 12px 24px rgba(0, 0, 0, 0.06);
+    }
+
+    /* Icon Container */
+    .sk-story-icon-box {
+        width: 3.25rem;
+        height: 3.25rem;
+        border-radius: 0.85rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 1.5rem;
+        flex-shrink: 0;
+    }
+
+    /* Heading Styling */
+    .sk-story-title {
+        font-size: 1.25rem;
+        font-weight: 700;
+        color: #18181b;
+        margin: 0 0 1rem 0;
+        line-height: 1.35;
+        letter-spacing: -0.01em;
+        font-family: inherit;
+        text-align: left;
+    }
+
+    /* Content Body Styling */
+    .sk-story-desc {
+        font-size: 0.95rem;
+        color: #52525b;
+        line-height: 1.65;
+        margin: 0;
+        font-family: inherit;
+        text-align: left;
+    }
+
+    .sk-story-desc p {
+        margin: 0 0 0.85rem 0;
+    }
+
+    .sk-story-desc p:last-child {
+        margin-bottom: 0;
+    }
+
+    @media (max-width: 640px) {
+        .sk-story-card {
+            padding: 1.5rem;
+        }
+        .sk-story-icon-box {
+            width: 2.75rem;
+            height: 2.75rem;
+            margin-bottom: 1.25rem;
+        }
+        .sk-story-title {
+            font-size: 1.125rem;
+        }
+        .sk-story-desc {
+            font-size: 0.9rem;
+        }
+    }
+</style>
+
+<div class="sk-story-section">
+    <div class="sk-story-grid">
+
+        <!-- Card 1 -->
+        <div class="sk-story-card">
+            <div class="sk-story-icon-box" style="background: rgba(245, 158, 11, 0.08); box-shadow: inset 0 0 0 1px rgba(245, 158, 11, 0.18);">
+                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#f59e0b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="2" y="7" width="20" height="14" rx="2" ry="2"/>
+                    <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>
+                </svg>
+            </div>
+            <h3 class="sk-story-title">It started with an $80-a-month job</h3>
+            <div class="sk-story-desc">
+                <p>I began my career in 2015 with a job that paid $80 a month. I worked 12 to 16 hours a day. I cleaned the office, cooked, and handled the banking and the paperwork.</p>
+                <p>I also visited factories, collected the data, prepared the reports, delivered them and collected the payment. That job taught me what it means to own a piece of work from start to finish. It is the standard I still hold my team to.</p>
+                <p>After a year in that job, I started freelancing in 2016 as a graphic designer and virtual assistant for U.S. entrepreneurs. Over time I added web development and digital marketing. I also studied business administration, which changed how I looked at my own work.</p>
+            </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="sk-story-card">
+            <div class="sk-story-icon-box" style="background: rgba(96, 165, 250, 0.08); box-shadow: inset 0 0 0 1px rgba(96, 165, 250, 0.18);">
+                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#60a5fa" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10"/>
+                    <path d="m9 12 2 2 4-4"/>
+                </svg>
+            </div>
+            <h3 class="sk-story-title">Design and marketing have one job</h3>
+            <div class="sk-story-desc">
+                <p>One idea has guided me ever since: design and marketing only matter when they lead to sales. A website can look great and still bring in no enquiries. When that happens, it has not done its job.</p>
+                <p>Over the next few years I worked with U.S. businesses of many kinds, including several earning six and seven figures. Seeing how they operated gave me a clear view of what good execution looks like.</p>
+            </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="sk-story-card">
+            <div class="sk-story-icon-box" style="background: rgba(52, 211, 153, 0.08); box-shadow: inset 0 0 0 1px rgba(52, 211, 153, 0.18);">
+                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#34d399" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                    <circle cx="9" cy="7" r="4"/>
+                    <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                    <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                </svg>
+            </div>
+            <h3 class="sk-story-title">The pattern I kept seeing with coaches</h3>
+            <div class="sk-story-desc">
+                <p>In 2019 I started working with U.S. coaches as a marketing assistant. I kept seeing the same thing. These were people with real expertise, and they were spending their week on funnels, websites and video edits instead of coaching.</p>
+                <p>Many had already tried to get help. Some were paying high agency retainers with little to show for it. Others kept losing momentum to freelancers they could not rely on.</p>
+                <p>More tools or more training would not have fixed that. They needed a team they could trust to do the work and take ownership of it.</p>
+            </div>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="sk-story-card">
+            <div class="sk-story-icon-box" style="background: rgba(244, 63, 94, 0.08); box-shadow: inset 0 0 0 1px rgba(244, 63, 94, 0.18);">
+                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#f43f5e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"/>
+                    <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"/>
+                </svg>
+            </div>
+            <h3 class="sk-story-title">YouTube showed me the same problem</h3>
+            <div class="sk-story-desc">
+                <p>I began growing YouTube channels for clients in 2020. I saw channel owners pay for quick subscriber offers that harmed their channels for years. I also saw valuable videos go unseen because nobody had optimized them to be found.</p>
+                <p>I often compare it to a promotional poster kept inside your house. The poster may be excellent, but nobody will see it there.</p>
+                <p>YouTube builds authority and trust when it is done consistently and done properly. That takes strategy, editing, thumbnails, SEO, publishing and analytics. It is not a one-person job, and a busy coach should not have to carry all of it.</p>
+            </div>
+        </div>
+
+        <!-- Card 5 -->
+        <div class="sk-story-card">
+            <div class="sk-story-icon-box" style="background: rgba(167, 139, 250, 0.08); box-shadow: inset 0 0 0 1px rgba(167, 139, 250, 0.18);">
+                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#a78bfa" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.71 1.1-1.38 1.4-2"/>
+                    <path d="M12 15l-3-3 3-3"/>
+                    <path d="M15 12h-6"/>
+                    <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
+                </svg>
+            </div>
+            <h3 class="sk-story-title">Building the team</h3>
+            <div class="sk-story-desc">
+                <p>In 2021 I founded SkyrocketCoach. I brought together a group of specialists in Barishal, Bangladesh, and trained them.</p>
+                <p>That focus is deliberate. Because we work only with coaches, consultants, and experts in their fields, we already understand your audience, your business model, and how your clients decide to buy.</p>
+                <p>We run on three values. <strong>Integrity</strong> means we treat your brand with the care we give our own. <strong>Reliability</strong> means we deliver on time and to a high standard. <strong>Partnership</strong> means you bring the expertise and we bring the execution.</p>
+            </div>
+        </div>
+
+        <!-- Card 6 -->
+        <div class="sk-story-card">
+            <div class="sk-story-icon-box" style="background: rgba(6, 182, 212, 0.08); box-shadow: inset 0 0 0 1px rgba(6, 182, 212, 0.18);">
+                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#06b6d4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10"/>
+                    <line x1="2" y1="12" x2="22" y2="12"/>
+                    <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+                </svg>
+            </div>
+            <h3 class="sk-story-title">Where we are today</h3>
+            <div class="sk-story-desc">
+                <p>Today SkyrocketCoach supports more than 50 coaches and consultants across the U.S. and Europe. Our team handles YouTube management, video editing, sales funnels and automation, website design and SEO.</p>
+                <p>Our clients record their videos, then get back to their clients and business. We take the rest off their plate and keep communication smooth, so they always know where things stand.</p>
+                <p>I stay closely involved in strategy, design and client relationships. Mustafa Galib leads operations as our COO, working with our video editors and web developer.</p>
+            </div>
+        </div>
+
+        <!-- Card 7 (Centered in last row) -->
+        <div class="sk-story-card sk-story-card-center">
+            <div class="sk-story-icon-box" style="background: rgba(236, 72, 153, 0.08); box-shadow: inset 0 0 0 1px rgba(236, 72, 153, 0.18);">
+                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#ec4899" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l8.78-8.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+                </svg>
+            </div>
+            <h3 class="sk-story-title">Why I still do this</h3>
+            <div class="sk-story-desc">
+                <p>The coaches and consultants we work with are very good at helping people. I want them to spend their time doing that, with peace of mind that their marketing is in reliable hands.</p>
+                <p>Away from work, you will usually find me with a camera or listening to country music.</p>
+                <p>If any of this sounds familiar, book a call. We will listen to where you are, explain what we do, and you can decide if we are the right fit.</p>
+            </div>
+        </div>
+
+    </div>
+</div>
